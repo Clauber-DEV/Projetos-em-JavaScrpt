@@ -1,4 +1,4 @@
-function dados() {
+function salvar() {
     let nome = document.querySelector('input#nome')
     let ano = document.querySelector('input#ano')
     let sal = document.querySelector('input#salario')
