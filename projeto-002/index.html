@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icone favorito/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="estilo-css/estilo.css">
+    <title>Desconto em compras</title>
+</head>
+
+<body>
+    <header>
+        <h1>Mercado boas compras</h1>
+    </header>
+    <section>
+        <h2>Aqui nosso cliente ganha 10% de desconto acima de R$500,00 em compras!!</h2>
+        <p>Qual o valor total em compras?</p>
+        <p>R$ <input type="number" name="total" id="total"></p>
+    </section>
+
+    <p><input type="button" value="verificar" onclick="verificar()"></p>
+
+    <section>
+        <p id="desconto">Calculando seu desconto...</p>
+    </section>
+    <footer><small>@clauber-cp</small></footer>
+    <script src="script-desconto/script.js"></script>
+</body>
+
+</html>
