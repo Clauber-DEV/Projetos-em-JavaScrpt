@@ -3,20 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Conversor de Medidas.</title>
 </head>
 
 <body>
-    <section>
+    <header>
         <h1>Conversor de Medidas.</h1>
+    </header>
+    <section>
         <p>Distancia em metros:
-            <input type="number" name="numero" id="numero">
-            <input type="button" value="Converter" onclick="converter()"></p>
-            
-            <div id="resultado"></div>
+            <input type="number" name="metros" id="metros">
+            <input type="button" value="Converter" onclick="converter()">
+        </p>
+        <p id="resultado"></p>
     </section>
+    <footer><small>@clauber-cp</small></footer>
     <script src="script/script.js"></script>
 </body>
 
