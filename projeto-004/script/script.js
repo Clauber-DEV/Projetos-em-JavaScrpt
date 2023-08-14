@@ -1,59 +1,41 @@
-let preco = document.querySelector(`input#preco`)
-let resultado = document.querySelector(`div#resultado`)
-function carnaval() {
+const preco = document.querySelector(`input#preco`);
+const resultado = document.querySelector(`div#resultado`);
 
-    if (preco.value.length == 0) {
-        window.alert(`Por favor digite o preço antes de clicar no periodo!`)
+function calcularPeriodo(percentual) {
+    if (preco.value.length === 0) {
+        window.alert(`Por favor, digite o preço antes de clicar no período!`);
     } else {
-        let preco1 = Number(preco.value)
-        let preco2 = (10 * preco1 / 100) + preco1
-        resultado.innerHTML = `Nesse período seu produto terá mais 10% no valor.<br>
-        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
+        const preco1 = Number(preco.value);
+        const preco2 = preco1 + (percentual * preco1 / 100);
+        
+        let descricao = "";
+        if (percentual > 0) {
+            descricao = `terá mais ${percentual}% no valor`;
+        } else {
+            descricao = `terá menos ${Math.abs(percentual)}% no valor`;
+        }
+
+        resultado.innerHTML = `Nesse período seu produto ${descricao}.<br>
+            De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`;
     }
+}
+
+function carnaval() {
+    calcularPeriodo(10);
 }
 
 function ferias() {
-    if (preco.value.length == 0) {
-        window.alert(`Por favor digite o preço antes de clicar no periodo!`)
-    } else {
-        let preco1 = Number(preco.value)
-        let preco2 = (20 * preco1 / 100) + preco1
-        resultado.innerHTML = `Nesse período seu produto terá mais 20% no valor.<br>
-        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
-    }
+    calcularPeriodo(20);
 }
 
 function crianca() {
-
-    if (preco.value.length == 0) {
-        window.alert(`Por favor digite o preço antes de clicar no periodo!`)
-    } else {
-        let preco1 = Number(preco.value)
-        let preco2 = (5 * preco1 / 100) + preco1
-        resultado.innerHTML = `Nesse período seu produto terá mais 5% no valor.<br>
-        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
-    }
+    calcularPeriodo(5);
 }
 
 function bfriday() {
-    if (preco.value.length == 0) {
-        window.alert(`Por favor digite o preço antes de clicar no período!.`)
-    } else {
-        let preco1 = Number(preco.value)
-        let preco2 = preco1 - (30 * preco1 / 100)
-        resultado.innerHTML = `Nesse período seu produto terá menos 30% no valor.<br>
-        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
-
-    }
+    calcularPeriodo(-30);
 }
 
 function natal() {
-    if (preco.value.length == 0) {
-        window.alert(`Por favor digite o preço antes de clicar no periodo!.`)
-    } else {
-        let preco1 = Number(preco.value)
-        let preco2 = preco1 - (5 * preco1 / 100)
-        resultado.innerHTML = `Nesse período seu produto terá menor 5% no valor.<br>
-        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
-    }
+    calcularPeriodo(-5);
 }
