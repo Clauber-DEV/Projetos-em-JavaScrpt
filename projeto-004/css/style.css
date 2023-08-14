@@ -1,0 +1,31 @@
+body{
+    background-color: #002712;
+    font: normal 15pt Arial;
+}
+
+header{
+    color: #FBDA7F;
+    text-align: center;
+}
+
+section{
+    background-color: aliceblue;
+    font-size: medium;
+    border-radius: 10pt;
+    padding: 15pt;
+    width: auto;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.705);
+}
+input{
+    background-color: #fbda7f65;
+    border-radius: 10pt;
+    padding: 3pt;
+    margin-block-end: inherit;
+}
+
+footer{
+    color: rgba(215, 230, 120, 0.699);
+    text-align: center;
+    font-size: initial;
+}

@@ -8,7 +8,7 @@ function carnaval() {
         let preco1 = Number(preco.value)
         let preco2 = (10 * preco1 / 100) + preco1
         resultado.innerHTML = `Nesse período seu produto terá mais 10% no valor.<br>
-        De R$${preco1} passará para R$${preco2}.`
+        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
     }
 }
 
@@ -19,7 +19,7 @@ function ferias() {
         let preco1 = Number(preco.value)
         let preco2 = (20 * preco1 / 100) + preco1
         resultado.innerHTML = `Nesse período seu produto terá mais 20% no valor.<br>
-        De R$${preco1} passará para R$${preco2}.`
+        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
     }
 }
 
@@ -31,7 +31,7 @@ function crianca() {
         let preco1 = Number(preco.value)
         let preco2 = (5 * preco1 / 100) + preco1
         resultado.innerHTML = `Nesse período seu produto terá mais 5% no valor.<br>
-        De R$${preco1} passará para R$${preco2}.`
+        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
     }
 }
 
@@ -42,7 +42,7 @@ function bfriday() {
         let preco1 = Number(preco.value)
         let preco2 = preco1 - (30 * preco1 / 100)
         resultado.innerHTML = `Nesse período seu produto terá menos 30% no valor.<br>
-        De R$${preco1} passará para R$${preco2}.`
+        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
 
     }
 }
@@ -54,6 +54,6 @@ function natal() {
         let preco1 = Number(preco.value)
         let preco2 = preco1 - (5 * preco1 / 100)
         resultado.innerHTML = `Nesse período seu produto terá menor 5% no valor.<br>
-        De R$${preco1} passará para R$${preco2}.`
+        De R$${preco1.toFixed(2)} passará para R$${preco2.toFixed(2)}.`
     }
 }
