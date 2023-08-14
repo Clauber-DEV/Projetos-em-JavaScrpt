@@ -40,7 +40,7 @@ function bfriday() {
         window.alert(`Por favor digite o preço antes de clicar no período!.`)
     } else {
         let preco1 = Number(preco.value)
-        let preco2 = (30 * preco1 / 100) - preco1
+        let preco2 = preco1 - (30 * preco1 / 100)
         resultado.innerHTML = `Nesse período seu produto terá menos 30% no valor.<br>
         De R$${preco1} passará para R$${preco2}.`
 
@@ -52,7 +52,7 @@ function natal() {
         window.alert(`Por favor digite o preço antes de clicar no periodo!.`)
     } else {
         let preco1 = Number(preco.value)
-        let preco2 = (5 * preco1 / 100) - preco1
+        let preco2 = preco1 - (5 * preco1 / 100)
         resultado.innerHTML = `Nesse período seu produto terá menor 5% no valor.<br>
         De R$${preco1} passará para R$${preco2}.`
     }
