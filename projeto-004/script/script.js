@@ -7,7 +7,7 @@ function calcularPeriodo(percentual) {
     } else {
         const preco1 = Number(preco.value);
         const preco2 = preco1 + (percentual * preco1 / 100);
-        
+
         let descricao = "";
         if (percentual > 0) {
             descricao = `terá mais ${percentual}% no valor`;
