@@ -15,11 +15,10 @@ section {
     padding: 15pt;
     width: auto;
     margin: auto;
-    box-shadow: rgba(0, 0, 0, 0.705);
 }
 
 input {
-    background-color: #fbda7f65;
+    background-color: rgba(251, 218, 127, 0.4);
     border-radius: 10pt;
     padding: 3pt;
     margin-block-end: inherit;
