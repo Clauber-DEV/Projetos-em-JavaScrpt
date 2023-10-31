@@ -29,6 +29,6 @@ rl.question(`Digite um valor: `, function (valor1) {
         console.log("Divisão real" + n5)
         console.log("Resto da divisão" + n6)
 
-        rl.close();
+        rl.close();// fechamento da interface de leitura
     })
 })
