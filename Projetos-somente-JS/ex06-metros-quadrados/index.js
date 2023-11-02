@@ -3,6 +3,7 @@
  * sabendo que a cada lata de tinta pinta 2m².
  */
 
+// criação de interface de linha de comando interativa da linha 7 a linha 15.
 const readline = require(`readline`);
 
 const rl = readline.createInterface({
