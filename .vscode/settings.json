@@ -1,4 +1,6 @@
 {
     "genieai.enableConversationHistory": true,
-    "genieai.response.showNotification": true
+    "genieai.response.showNotification": true,
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.editor.wrapTabs": true
 }
