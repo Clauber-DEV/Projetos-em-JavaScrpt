@@ -1,3 +1,5 @@
+/** O programa deve apresentr as seguintes converções de medida:*/
+
 const readline = require(`readline`);
 
 const rl = readline.createInterface({
@@ -5,10 +7,12 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question(`Distancia em Metros: `, function (distancia) {
+rl.question(`Distancia em Metros: `, function (distancia) { // Entrada de dados.
 
+    // Conversor de string para numberint.
     const dist = parseInt(distancia)
 
+    // Calculo.
     const m1 = dist / 1000;
     const m2 = dist / 100;
     const m3 = dist / 10;
@@ -16,6 +20,7 @@ rl.question(`Distancia em Metros: `, function (distancia) {
     const m5 = dist * 100;
     const m6 = dist * 1000;
 
+    // Saída de dados.
     console.log(m1.toFixed(2) + "km");
     console.log(m2.toFixed(2) + "Hm");
     console.log(m3.toFixed(2) + "Dam");

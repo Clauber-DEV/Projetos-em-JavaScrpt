@@ -1,3 +1,8 @@
+/** Programa deve receber dados do usuário em seguida deve entregar 
+ * o número inserido e seu antecessor e o predecessor.
+ */
+
+// Criação de interface de linha de comando interativa.
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -5,19 +10,18 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question('Digite qualquer número inteiro: ', function(numero) {
-    
-    let n, nme, nma;
-    
-    n = parseInt(numero);
+rl.question('Digite qualquer número inteiro: ', function (numero) { // Entraa de dados.
 
-    // Cálculos
-    nme = n - 1;
-    nma = n + 1;
+    // Conversor de string para numberint.
+    let primeironum = parseInt(numero);
 
-    // Resultados
-    console.log("O antecessor de " + n + " é " + nme);
-    console.log("O sucessor de " + n + " é " + nma);
+    // Cálculos.
+    let numantes = primeironum - 1;
+    let numdepois = primeironum + 1;
+
+    // Resultados.
+    console.log("O antecessor de " + primeironum + " é " + numantes);
+    console.log("O sucessor de " + primeironum + " é " + numdepois);
 
     rl.close();
 });
