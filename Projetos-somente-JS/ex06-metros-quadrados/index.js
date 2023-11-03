@@ -13,15 +13,20 @@ const rl = readline.createInterface({
 
 rl.question("Qual a altura da parede?: ", function (altura) {
     rl.question("Qual a largura da parede?: ", function (largura) {
+
+        // Converção de strng para numberint.
         let alt = parseInt(altura);
         let larg = parseInt(largura);
 
+        // Calculo.
         let metroq = alt * larg
         let latatinta = metroq / 2
 
+        // Saída de dados
         console.log(`Orçamento:`)
         console.log(`Uma parede de ${alt} X ${larg} tem uma area de ${metroq}m².`)
         console.log(`Precisamos de ${latatinta} latas de tinta.`)
+
         rl.close();
     });
 });
