@@ -1,3 +1,9 @@
+/** O programa deve receber dois valores e realizar uma média entre eles e retornar:
+ * abaixo de 5 == reprovado
+ * entre 5 e 7 == recupração
+ * acima de 7 == aprovado
+ * não aceitar valores abaixo de 0 e cima de 10
+ */
 const readline = require(`readline`);
 
 const rl = readline.createInterface({
@@ -5,13 +11,17 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+// Entrada de dados perguntas ao usuário.
 rl.question("Primeira nota: ", function (notaprima) {
     rl.question("Segunda nota: ", function (notasecunda) {
-
+        // converção de string para number int
         let nota1 = parseInt(notaprima)
         let nota2 = parseInt(notasecunda)
 
+        // Calculo
         let media = (nota1 + nota2) / 2
+
+        // teste lógico.
         console.log(`A média do aluno é ${media.toFixed(2)}`)
         if (media <= 5) {
             console.log(`O aluno foi REPROVADO!`)
