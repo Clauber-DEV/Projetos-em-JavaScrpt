@@ -14,6 +14,7 @@ rl.question("Então digite ele aqui: ", function (anoQualquer) {
 
     let ano = parseInt(anoQualquer)
 
+    // Avaliação boleana.
     if (ano % 4 == 0 && ano % 100 != 0 || ano % 400 == 0) {
         console.log(`O ano ${ano} é bissexto.`)
     } else {
