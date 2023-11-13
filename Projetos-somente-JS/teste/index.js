@@ -10,5 +10,3 @@ rl.question("", function(){
 
     rl.close()
 });
-
-Projetos-somente-JS/exemplo-tirando-media-com-estrutura-controle
