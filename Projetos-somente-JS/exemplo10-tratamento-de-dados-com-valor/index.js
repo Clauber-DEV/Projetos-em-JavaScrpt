@@ -15,7 +15,7 @@ async function iniciar() {
 
         let teclado = await pergunta("Qual sua idade: ");
 
-        if (isNaN(teclado)) {
+        if (isNaN(teclado)) { // isNaN resumo de is Not a Number == isto não é um número.
             console.log("ERRO!! A idade deve ser um número!");
         } else {
 
