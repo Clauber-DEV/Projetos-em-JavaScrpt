@@ -1,44 +1,38 @@
+/*ex 031
+    * Programa que leia do número determinado de forma decrescente e marque os multiplos 
+    * determinados pelo o usuário. 
+    * Operadores de controle do inicio
+    * Sem a utilisação de "function async"
+    */
 
-/** analizar depois */
-const readline = require('readline');
-const u = require('util'); // Se precisar da função u.aguarde(), substitua 'util' por 'u'
+const lerLinha = require(`readline`);
 
-const rl = readline.createInterface({
+const lerL = lerLinha.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-function inicio() {
-    let cont, marc;
+function marcaMultDecrs() {
+    let iniCont, marcMult;
 
-    rl.question("De onde quer começar? : ", function (entradaCont) {
-        cont = parseInt(entradaCont);
+    lerL.question("De qual número comaçar?: ", function (inicioContagem) {
+        iniCont = parseInt(inicioContagem);
 
-        rl.question("Os MULTIPLOS de quem você quer marcar? : ", function (entradaMarc) {
-            marc = parseInt(entradaMarc);
+        lerL.question("Quer marcar multiplos de quem?: ", function (marcaMultiplos) {
+            marcMult = parseInt(marcaMultiplos)
 
-            console.log("   CONTANDO...\n");
-
-            while (cont > 0) {
-                if (cont % marc === 0) {
-                    process.stdout.write(` -[${cont}]- `);
+            while (iniCont > 0) {
+                if (iniCont % marcMult === 0) {
+                    process.stdout.write(` -[${iniCont}]- `)
                 } else {
-                    process.stdout.write(` -${cont}- `);
+                    process.stdout.write(` -${iniCont}- `)
                 }
-                cont--;
-
-                aguarde(500);
+                iniCont--;
             }
-
-            aguarde(800);
-            console.log(" -FIM!- ");
-            rl.close();
+            console.log(" -FIM!- ")
+            lerL.close()
         });
     });
 }
 
-function aguarde(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-inicio();
+marcaMultDecrs();
