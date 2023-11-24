@@ -5,18 +5,18 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+let pessoaMaisVelha = { nome: '', idade: -1 };
+let pessoaMaisNova = { nome: '', idade: Infinity };
+
 function cadastrarPessoas() {
     rl.question("Quantas pessoas deseja cadastrar? ", function (quantidade) {
         const totalPessoas = parseInt(quantidade);
-        
+
         if (totalPessoas <= 0) {
             console.log("Por favor, insira um número válido de pessoas.");
             rl.close();
             return;
         }
-
-        let pessoaMaisVelha = { nome: '', idade: -1 };
-        let pessoaMaisNova = { nome: '', idade: Infinity };
 
         let contador = 0;
 
