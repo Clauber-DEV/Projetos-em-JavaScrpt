@@ -31,13 +31,13 @@ async function cadastroDePessoas() {
             nome = await perguntas(`${ciclo}º pessoa: `);
         }
 
-        let recebIdade = await perguntas("Idade: ");
+        let recebIdade = await perguntas(`Idade de ${nome}: `);
         idade = parseInt(recebIdade);
 
         // Validar a idade
         while (isNaN(idade) || idade < 0 || idade > 130) {
             console.log("Por favor, insira uma idade válida.");
-            recebIdade = await perguntas("Idade: ");
+            recebIdade = await perguntas(`Idade de ${nome}: `);
             idade = parseInt(recebIdade);
         }
 
@@ -60,7 +60,7 @@ async function cadastroDePessoas() {
     }
 
     // saída de dados
-    console.log("A pessoa mais velha é " + maiorn + " e tem ", maior, " de idade.");
+    console.log("A pessoa mais velha é " + maiorn + " e tem " + maior + " de idade.");
     console.log("A pessoa mais nova é " + menorn + " e tem " + menor + " de idade.");
     lerL.close();
 }
