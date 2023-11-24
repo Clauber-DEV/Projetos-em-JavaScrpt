@@ -15,19 +15,19 @@ async function cadastroDePessoas() {
     let quant = 0, ciclo = 1, idade = 0, maior = 0, menor = 0;
     let nome = "", maiorn = "", menorn = "";
 
-    console.log("Cadastro de Pessoas.\n Para sair digite [0] na quantidade de cadastro.");
+    console.log("\n\tCadastro de Pessoas.\nPara sair digite [0] na quantidade de cadastro.\n");
 
     let quantidadepes = await perguntas("Quantas pessoas irão se cadastrar?: ");
     quant = parseInt(quantidadepes);
 
-    while (isNaN(quant) || quant < 0) {
+    while (isNaN(quant) || quant < 0) { // condição para entrada de quantidade válida.
         console.log("[ERRO!] FAVOR INSIRA UMA QUANTIDADE VÁLIDA!!");
         let quantidadepes = await perguntas("Quantas pessoas irão se cadastrar?: ");
         quant = parseInt(quantidadepes);
 
     }
 
-    if (quant === 0) { // cindição para caso queira fechar o programa.
+    if (quant === 0) { // condição para caso queira fechar o programa.
         console.log("Fechando o Programa.");
         lerL.close();
     } else {
@@ -72,6 +72,7 @@ async function cadastroDePessoas() {
         }
 
         // saída de dados
+        console.log("\n   RESULTADOS:\n")
         console.log("A pessoa mais velha é " + maiorn + " e tem " + maior + " de idade.");
         console.log("A pessoa mais nova é " + menorn + " e tem " + menor + " de idade.");
         lerL.close();
