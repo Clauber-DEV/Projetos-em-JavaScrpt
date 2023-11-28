@@ -2,7 +2,6 @@
  * construindo uma tabuada utilizando o comando "for"
  */
 
-const { networkInterfaces } = require("os");
 const criarInterface = require(`readline`);
 
 const interface = criarInterface.createInterface({
