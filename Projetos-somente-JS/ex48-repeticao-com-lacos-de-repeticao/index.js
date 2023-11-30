@@ -11,29 +11,29 @@ const entrada = readline.createInterface({
 });
 
 function numeroprimo() {
-    let ciclo = 0, numero = 0, div = 0
+    let numero = 0, div = 0;
 
     entrada.question("Número: ", function (num) {
-        numero = parseInt(num)
+        numero = parseInt(num);
 
-        for (ciclo = 1; ciclo <= numero; ciclo++) {
-
-            if (numero % ciclo === 0 || numero / ciclo === numero) {
-                console.log("[", ciclo, "]")
-                div = div + 1
+        for (let ciclo = 1; ciclo <= numero; ciclo++) {
+            if (numero % ciclo === 0) {
+                console.log("[", ciclo, "]");
+                div = div + 1;
             } else {
-                console.log(" ", ciclo, " ")
+                console.log(" ", ciclo, " ");
             }
+        }
 
-        }
-        entrada.close()
+        entrada.close();
+
         if (div === 2) {
-            console.log("O número ", numero, " foi divisivel 2 vezes")
-            console.log("Esse é um número PRIMO")
+            console.log("O número ", numero, " foi divisível apenas por 1 e por ele mesmo.");
+            console.log("Esse é um número PRIMO");
         } else {
-            console.log("O número ", numero, " não é PRIMO.")
+            console.log("O número ", numero, " não é PRIMO.");
         }
-    })
+    });
 }
 
 numeroprimo();
