@@ -1,4 +1,4 @@
-/* M03 ex 048 repetição com variaveis de controle
+/* ex 048 repetição com variaveis de controle
  * O programa deve receber um valor inteiro do usuário 
  * informar se o valor implemetado é um número primo
  * Autor: Clauber Cardoso Porto
