@@ -2,7 +2,7 @@
  * Busca Sequencial em VETOR
  * método para encontrar o valor e em qual indece se encontra
  * e tratar os dados revelando a soma dos valores, 
- * a media dos valores e quais valores são maiores doque a chave.
+ * a media dos valores e quais valores são maiores doque a chave/média.
  */
 
 const CriarInterface = require(`readline`);
@@ -25,9 +25,11 @@ async function buscaChave() {
         valores[indice] = Math.floor(Math.random() * 11);
     }
 
+    console.log("Array e seus valores:")
     for (indice = 0; indice < valores.length; indice++) {
-        console.log(`[${valores[indice]}] `);
+        process.stdout.write(`[${valores[indice]}]  `); // comndo para exibir os valores lado a lado
     }
+    console.log()// comando nesessario para que apareça os valores lado a lado no terminal
 
     for (indice = 0; indice < valores.length; indice++) {
         somaTotal += valores[indice]
@@ -45,9 +47,10 @@ async function buscaChave() {
 
     console.log("Resultado da soma é ", soma)
     console.log(`A média dos valores é ${media.toFixed(2)}`)
+    console.log(`Velores que são maiores que essa média acima: `)
     for (indice = 0; indice < valores.length; indice++) {
         if (valores[indice] > media) {
-            console.log(`Indice [${indice}] valor ${valores[indice]}.`)
+            process.stdout.write(`\nIndice [${indice}] valor ${valores[indice]}.`)
         }
     }
     Criar.close()
