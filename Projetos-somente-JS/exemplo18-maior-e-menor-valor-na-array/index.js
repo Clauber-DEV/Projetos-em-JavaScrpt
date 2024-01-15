@@ -1,4 +1,7 @@
-/** Rsolver problema de Lógica depois */
+/** exemplo 18 
+ * exemplo de como mostrar e analizar o maior e menor valor dentro de uma array e
+ * imprimir na tela.
+ */
 
 const CriarInterface = require(`readline`);
 
@@ -20,11 +23,6 @@ async function maiorMenor() {
     for (indice = 0; indice < valores.length; indice++) {
         process.stdout.write(` ${valores[indice]}`);
         await aguarde(400);
-    }
-    console.log();
-
-    for (indice = 0; indice < valores.length; indice++) {
-        valores[indice] = Math.floor(Math.random() * 11);
 
         if (indice === 0) {
             maiorValor = valores[indice]
@@ -39,6 +37,7 @@ async function maiorMenor() {
             }
         }
     }
+    console.log();
 
     await aguarde(300)
     console.log(`Maior valor encontrado: ${maiorValor}`);
@@ -47,7 +46,7 @@ async function maiorMenor() {
             console.log(`Maior valor encontrado no indice [${indice}]`)
         }
     }
-    
+
     await aguarde(300)
     console.log(`Menor valor encontrado: ${menorValor}`);
     for (indice = 0; indice < valores.length; indice++) {
