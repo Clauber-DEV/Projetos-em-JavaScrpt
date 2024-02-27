@@ -10,50 +10,76 @@
 */
 
 
-const criarInterface = require(`readline`);
+const readline = require('readline');
 
-const interface = criarInterface.createInterface({
+const interface = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-        //                                  FALTA TERMINAR
-async function analiseCaracteres(){
-    const totalIndices = 2
-    const vetorNomes = new Array(totalIndices)
 
-    for(let ind = 0; ind < vetorNomes.length; ind++){
-        vetorNomes[ind] = await perguntas(`Nome para a prosição ${ind}: `)
+async function analiseCaracteres() {
+    const totalIndices = 2;
+    const vetorNomes = new Array(totalIndices);
+
+    for (let ind = 0; ind < vetorNomes.length; ind++) {
+        vetorNomes[ind] = await perguntas(`Nome para a posição ${ind}: `);
     }
 
-    console.log(`========= ${vetorNomes.length} NOMES CADASTRADOS =========`)
-    console.log("\t   ANALISANDO...")
-    await aguarde(1000)
+    console.log(`========= ${vetorNomes.length} NOMES CADASTRADOS =========`);
+    console.log("\t   ANALISANDO...");
+    await aguarde(1000);
 
-    console.log("Nomes com menos de cinco letras:")
+    console.log("Nomes com menos de cinco letras:");
 
-    let total5Letras = 0
-    for(let ind = 0; ind < vetorNomes.length; ind++){
-        if(vetorNomes[ind].length <= 5){
-            console.log(` ${vetorNomes[ind]} `)
-            await aguarde(300)
-            total5Letras++
+    let total5Letras = 0;
+    for (let ind = 0; ind < vetorNomes.length; ind++) {
+        if (vetorNomes[ind].length <= 5) {
+            console.log(` ${vetorNomes[ind]} `);
+            await aguarde(300);
+            total5Letras++;
         }
     }
-    console.log(`Total de nomes com menos de 5 letras ${total5Letras}`)
-    console.log("_______________________________________")
+    console.log(`Total de nomes com menos de 5 letras: ${total5Letras}`);
+    console.log("_______________________________________");
 
+    console.log("Nomes começando com vogal:");
 
-    interface.close()
+    let totalVogais = 0;
+    for (let ind = 0; ind < vetorNomes.length; ind++) {
+        const priL = vetorNomes[ind].charAt(0).toUpperCase();
+        if (priL == 'A' || priL == 'E' || priL == 'I' || priL == 'O' || priL == 'U') {
+            console.log(vetorNomes[ind]);
+            await aguarde(500);
+            totalVogais++;
+        }
+    }
+    console.log(`Total de nomes começando com vogal: ${totalVogais}`);
+    console.log("_______________________________________");
+
+    console.log("Nomes que possuem a letra 'S':");
+    
+    let totalS = 0;
+    for (let ind = 0; ind < vetorNomes.length; ind++) {
+        if (vetorNomes[ind].toUpperCase().includes('S')) {
+            console.log(`[${ind}] = ${vetorNomes[ind]}`);
+            await aguarde(400);
+            totalS++;
+        }
+    }
+    console.log(`Total de nomes com a letra 'S': ${totalS}`);
+    console.log("_______________________________________");
+
+    interface.close();
 }
 
-function perguntas(perguntar){
+function perguntas(perguntar) {
     return new Promise((resolve) => {
-        interface.question(perguntar,resolve)
-    })
+        interface.question(perguntar, resolve);
+    });
 }
 
-function aguarde(milisegundos){
-    return new Promise(resolve => setTimeout(resolve,milisegundos))
+function aguarde(milisegundos) {
+    return new Promise(resolve => setTimeout(resolve, milisegundos));
 }
 
-analiseCaracteres()
+analiseCaracteres();
