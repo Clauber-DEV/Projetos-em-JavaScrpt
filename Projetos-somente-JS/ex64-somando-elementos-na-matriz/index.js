@@ -16,16 +16,16 @@ function preencherMatriz(matriz, linhas, colunas) {
 // Função para somar os elementos de uma linha da matriz
 function somarLinha(matriz, linha) {
     let total = 0;
-    for (let ic = 0; ic < matriz[linha].length; ic++) {
-        total += matriz[linha][ic];
+    for (let indc = 0; indc < matriz[linha].length; indc++) {
+        total += matriz[linha][indc];
     }
     return total;
 }
 
 // Função para exibir a matriz
 function exibirMatriz(matriz) {
-    for (let il = 0; il < matriz.length; il++) {
-        for (let ic = 0; ic < matriz[il].length; ic++) {
+    for (let indl = 0; indl < matriz.length; indl++) {
+        for (let indc = 0; indc < matriz[indl].length; indc++) {
             process.stdout.write(matriz[il][ic] + '\t');
         }
         process.stdout.write('\n\n');
