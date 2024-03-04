@@ -26,7 +26,7 @@ function somarLinha(matriz, linha) {
 function exibirMatriz(matriz) {
     for (let indl = 0; indl < matriz.length; indl++) {
         for (let indc = 0; indc < matriz[indl].length; indc++) {
-            process.stdout.write(matriz[il][ic] + '\t');
+            process.stdout.write(matriz[indl][indc] + '\t');
         }
         process.stdout.write('\n\n');
     }
