@@ -1,126 +1,105 @@
 const readline = require('readline');
 
+// Criando uma interface de leitura para interagir com o usuário no terminal
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+  input: process.stdin,
+  output: process.stdout
 });
 
-console.log("\n==============================");
+// Mensagem de boas-vindas ao usuário
+console.log("==============================");
 console.log("       CAMPO MINADO v1.0      ");
 console.log("==============================");
 
+// Matriz para representar o campo minado
 const jogo = [];
-const tamanho = 5;
 
-for (let indL = 0; indL < tamanho; indL++) {
-    jogo[indL] = [];
-    for (let indC = 0; indC < tamanho; indC++) {
-        jogo[indL][indC] = '_';
-    }
+// Preenchendo inicialmente o campo com '_'
+for (let indL = 0; indL < 5; indL++) {
+  jogo[indL] = [];
+  for (let indC = 0; indC < 5; indC++) {
+    jogo[indL][indC] = '_';
+  }
 }
 
-let quant = 7;
+// Sorteando aleatoriamente a posição das bombas 'O' na matriz
+let bombas = 0;
+while (bombas < 7) {
+  let lin = sorteia(0, 4);
+  let col = sorteia(0, 4);
+  if (jogo[lin][col] === '_') {
+    jogo[lin][col] = 'O';
+    bombas++;
+  }
+}
+
+// Inicialização do jogo
 let tentativas = 1;
 let pontos = 0;
-
-let pl, pc;
-let bomba = 0;
-
-while (bomba < quant) {
-    pl = sorteia(0, tamanho - 1);
-    pc = sorteia(0, tamanho - 1);
-    if (jogo[pl][pc] === '_') {
-        jogo[pl][pc] = 'O';
-        bomba++;
-    }
-}
-
+let gameOver = false;
 jogada();
 
+// Função para o jogador fazer uma jogada
 function jogada() {
-    console.log("\n______________________________\n");
-    console.log("\t  0 1 2 3 4\n");
-    console.log("\t  v v v v v\n");
-
-    for (let indL = 0; indL < tamanho; indL++) {
-        process.stdout.write(`     ${indL}->  `);
-        for (let indC = 0; indC < tamanho; indC++) {
-            if (jogo[indL][indC] === '_' || jogo[indL][indC] === 'O') {
-                process.stdout.write("? ");
-            } else {
-                process.stdout.write(`${jogo[indL][indC]} `);
-            }
+  // Exibindo o campo minado atual
+  exibirCampo(jogo);
+  // Pedindo ao jogador para fornecer uma linha e uma coluna
+  rl.question(`\nFaça sua jogada! (Tentativas: ${tentativas})\nLinha: `, (lin) => {
+    rl.question(`Coluna: `, (col) => {
+      lin = parseInt(lin);
+      col = parseInt(col);
+      // Verificando se a entrada do jogador é válida
+      if (isNaN(lin) || isNaN(col) || lin < 0 || lin > 4 || col < 0 || col > 4) {
+        console.log("Jogada inválida. Por favor, insira valores válidos.");
+        setTimeout(jogada, 1000); // Aguardando 1 segundo antes da próxima jogada
+      } else {
+        // Verificando se a jogada atingiu uma bomba ou um espaço vazio
+        if (jogo[lin][col] === 'O') {
+          console.log("--> TIRO ERRADO! Você acertou uma bomba!");
+          gameOver = true;
+        } else if (jogo[lin][col] === '_') {
+          console.log("TIRO CERTO! Parabéns!");
+          tentativas++;
+          pontos += 2;
+        } else {
+          console.log("--> Você já atirou nesta posição! Tente novamente.");
         }
-        console.log("");
-    }
-
-    console.log("\n______________________________\n");
-    console.log(`Faça sua jogada! (Tentativas: ${tentativas})`);
-
-    setTimeout(() => {
-        rl.question("Linha = ", (answer1) => {
-            let lin = parseInt(answer1);
-            if (lin >= 0 && lin < jogo.length) {
-                setTimeout(() => {
-                    rl.question("COLUNA = ", (answer2) => {
-                        let col = parseInt(answer2);
-                        if (col >= 0 && col < jogo[0].length) {
-                            if (jogo[lin][col] === 'O') {
-                                console.log("--> TIRO ERRADO! Você acertou uma bomba!");
-                                jogo[lin][col] = '*';
-                                gameOver(false);
-                            } else if (jogo[lin][col] === '_') {
-                                console.log("TIRO CERTO! Parabéns!");
-                                jogo[lin][col] = 'V';
-                                tentativas++;
-                                pontos += 2;
-                                if (tentativas < quant || pontos < quant * 2) {
-                                    jogada();
-                                } else {
-                                    gameOver(true);
-                                }
-                            } else if (jogo[lin][col] === 'V') {
-                                console.log("--> Você já atirou nessa posição! Tente novamente!");
-                                jogada();
-                            }
-                        } else {
-                            console.log("Coluna inválida! Tente novamente.");
-                            jogada();
-                        }
-                    });
-                }, 1000);
-            } else {
-                console.log("Linha inválida! Tente novamente.");
-                jogada();
-            }
-        });
-    }, 1000);
+        // Verificando se o jogo terminou
+        if (!gameOver && tentativas <= 3 && pontos < 6) {
+          setTimeout(jogada, 1000); // Aguardando 1 segundo antes da próxima jogada
+        } else {
+          // Encerrando o jogo
+          gameOver = true;
+          gameOver();
+        }
+      }
+    });
+  });
 }
 
-function gameOver(vitoria) {
-    console.log("\n==============================");
-    console.log("           GAME OVER          ");
-    console.log("==============================\n");
-
-    for (let indL = 0; indL < tamanho; indL++) {
-        for (let indC = 0; indC < tamanho; indC++) {
-            process.stdout.write(`${jogo[indL][indC]} `);
-        }
-        console.log("");
-    }
-
-    console.log("\n______________________________");
-
-    if (vitoria) {
-        console.log("VITÓRIA! VOCÊ GANHOU! :)");
-    } else {
-        console.log("VOCÊ NÃO GANHOU!! :(");
-    }
-    console.log(`Você fez ${pontos} pontos em ${tentativas - 1} tentativas\n\n\n\n`);
-    
-    rl.close(); // Encerra a interface de leitura de entrada
+// Função para exibir o campo minado
+function exibirCampo(jogo) {
+  console.log("\n______________________________\n");
+  console.log("\t  0 1 2 3 4");
+  console.log("\t  v v v v v\n");
+  jogo.forEach((linha, indL) => {
+    console.log(`   ${indL}->  ${linha.join(' ')}`);
+  });
+  console.log("\n______________________________\n");
 }
 
+// Função para encerrar o jogo
+function gameOver() {
+  exibirCampo(jogo);
+  console.log("==============================");
+  console.log("         GAME OVER");
+  console.log("==============================\n");
+  console.log(`Você ${pontos === 6 ? "ganhou" : "perdeu"}!`);
+  console.log(`Você fez ${pontos} pontos em ${tentativas - 1} tentativas.`);
+  rl.close();
+}
+
+// Função para gerar números aleatórios dentro de um intervalo
 function sorteia(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
