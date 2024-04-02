@@ -1,4 +1,12 @@
-/*  ex 069 Repita meu escreva
+const readline = require('readline');
+const ut = require('util');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+/* M05 ex 069 Repita meu escreva
  *  O programa deve repetir bordas e frases
  *  em outras funções somente com disparos na função principal
  */
@@ -49,23 +57,22 @@ function repeticao(txt, vezesTXT, vezesBD) {
 }
 
 function inicio() {
-    let resp;
-    console.log("Quer ir para a versão ESTUDONAUTA? [ s / n ]");
-    resp = prompt();
-
-    if (resp === "s") {
-        console.log("\n    Versão ESTUDONAUTA\n\n");
-        meu_escreva("Sou Estudonauta", 1, 1);
-        meu_escreva("Estou aprendendo a programar", 3, 2);
-        meu_escreva("E estou adorando", 2, 3);
-        meu_escreva("Sucesso TOTAL!!", 5, 0);
-    } else {
-        console.log("\n    Minha versão\n\n");
-        repeticao("Sou Estudonauta", 1, 1);
-        repeticao("Estou aprendendo a programar", 3, 2);
-        repeticao("E estou adorando", 2, 3);
-        repeticao("Sucesso TOTAL!!", 5, 0);
-    }
+    rl.question("Quer ir para a versão ESTUDONAUTA? [ s / n ]\n", (resp) => {
+        if (resp === "s") {
+            console.log("\n    Versão ESTUDONAUTA\n\n");
+            meu_escreva("Sou Estudonauta", 1, 1);
+            meu_escreva("Estou aprendendo a programar", 3, 2);
+            meu_escreva("E estou adorando", 2, 3);
+            meu_escreva("Sucesso TOTAL!!", 5, 0);
+        } else {
+            console.log("\n    Minha versão\n\n");
+            repeticao("Sou Estudonauta", 1, 1);
+            repeticao("Estou aprendendo a programar", 3, 2);
+            repeticao("E estou adorando", 2, 3);
+            repeticao("Sucesso TOTAL!!", 5, 0);
+        }
+        rl.close();
+    });
 }
 
 function meu_escreva(txt, quant, borda) {
